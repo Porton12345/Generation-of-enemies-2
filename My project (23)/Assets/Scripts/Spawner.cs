@@ -4,9 +4,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField] private GameObject _enemyCapsule;
-
-    public static Vector3 direction = new Vector3(0, 0, 0);
+    [SerializeField] private GameObject _enemyCapsule;       
 
     private Vector3 _position;
     private int minRandom = 0;
@@ -23,16 +21,17 @@ public class Spawner : MonoBehaviour
     {
         _currentSpawnpoint = Random.Range(minRandom, maxRandom);
         _position = _spawnPoints[_currentSpawnpoint].position;
-        direction = new Vector3(Random.Range(minRandom, maxRandom), 0, Random.Range(minRandom, maxRandom));
-        Instantiate(_enemyCapsule, _position, Quaternion.identity);
-    }
+        Vector3 direction = new Vector3(Random.Range(minRandom, maxRandom), 0, Random.Range(minRandom, maxRandom));
+        var enemy = Instantiate(_enemyCapsule, _position, Quaternion.identity);
+        enemy.SetDirection(direction);
+    }    
 
     private IEnumerator Countdown(float delay)
     {
         while (true)
         {
             CreateWithInstantiate();
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(delay);
         }              
-    }
+    }    
 }
