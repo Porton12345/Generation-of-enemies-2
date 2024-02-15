@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {   
-    public float _speed = 0.01f;      
+    [SerializeField, Min(0)] private float _speed;      
 
-    public void SetDirection(Vector3 direction)
+    private void Update()
     {
-        transform.Translate(direction * _speed);
+        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
     }   
 }
