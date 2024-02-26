@@ -164,18 +164,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 88341553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3bc18ee8e688a468fddd39c2351c33, type: 3}
+  m_Script: {fileID: 11500000, guid: 4347210963b05b743b6eda95ddccc62e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _direction: {x: 10, y: 0, z: 0}
+  _direction: {x: 0, y: 0, z: 0}
   _spawnPoints:
   - {fileID: 1727128357}
   - {fileID: 814181248}
   - {fileID: 1668076359}
   - {fileID: 385159732}
   - {fileID: 1855395574}
-  _enemyCapsule: {fileID: 4375315884008590334, guid: 8120a23174603404abfaaa83f87138e9, type: 3}
+  _enemyCapsule: {fileID: 4606510969435520224, guid: b928abe792db86f4dbd442807da9f502, type: 3}
   _countSecondsBeforeSpawp: 2
+  _material: {fileID: 2100000, guid: 86a1b5b2fb261104fb427593c6c25a93, type: 2}
 --- !u!1 &289140238
 GameObject:
   m_ObjectHideFlags: 0
