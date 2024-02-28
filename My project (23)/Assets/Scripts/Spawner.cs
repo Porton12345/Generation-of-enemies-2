@@ -7,8 +7,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Transform[] _spawnPoints;    
     [SerializeField] private Mover _mover;
     [SerializeField] private Transform _target;
-    [SerializeField, Min(0)] private float _countSecondsBeforeSpawp;
-    [SerializeField] private Material _material;
+    [SerializeField, Min(0)] private float _countSecondsBeforeSpawp;    
        
     private int minRandom = 0;
     private int maxRandom = 5;      
