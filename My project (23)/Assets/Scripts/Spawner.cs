@@ -18,6 +18,15 @@ public class Spawner : MonoBehaviour
         StartCoroutine(Spawning(wait));
     }
 
+    private IEnumerator Spawning(WaitForSeconds wait)
+    {
+        while (true)
+        {
+            Spawn();
+            yield return wait;
+        }
+    }
+
     private void Spawn()
     {
         const int FirstSpawnPoint = 0;
@@ -33,69 +42,28 @@ public class Spawner : MonoBehaviour
         switch (_currentSpawnpoint)
         {
             case FirstSpawnPoint:
-                SpawnInFirstPoint(_position, FirstSpawnPoint);
+                SpawnInPoint(_position, FirstSpawnPoint);
                 break;
             case SecondSpawnPoint:
-                SecondSpawner(_position, SecondSpawnPoint);
+                SpawnInPoint(_position, SecondSpawnPoint);
                 break;
             case ThirdSpawnPoint:
-                ThirdSpawner(_position, ThirdSpawnPoint);
+                SpawnInPoint(_position, ThirdSpawnPoint);
                 break;
             case FourthSpawnPoint:
-                FourSpawner(_position, FourthSpawnPoint);
+                SpawnInPoint(_position, FourthSpawnPoint);
                 break;
             case FifthSpawnPoint:
-                FiveSpawner(_position, FifthSpawnPoint);
+                SpawnInPoint(_position, FifthSpawnPoint);
                 break;             
         }       
     }
 
-    private void SpawnInFirstPoint(Vector3 _position, int FirstSpawnPoint)
+    private void SpawnInPoint(Vector3 _position, int FirstSpawnPoint)
     {        
         _position = _spawnPoints[FirstSpawnPoint].position;
         var enemy = Instantiate(_mover[FirstSpawnPoint], _position, Quaternion.identity);
         Vector3 direction = (_target[FirstSpawnPoint].position - transform.position).normalized;
         enemy.SetDirection(direction);
-    }
-
-    private void SecondSpawner(Vector3 _position, int SecondSpawnPoint)
-    {
-        _position = _spawnPoints[SecondSpawnPoint].position;
-        var enemy = Instantiate(_mover[SecondSpawnPoint], _position, Quaternion.identity);
-        Vector3 direction = (_target[SecondSpawnPoint].position - transform.position).normalized;
-        enemy.SetDirection(direction);
-    }
-
-    private void ThirdSpawner(Vector3 _position, int ThirdSpawnPoint)
-    {
-        _position = _spawnPoints[ThirdSpawnPoint].position;
-        var enemy = Instantiate(_mover[ThirdSpawnPoint], _position, Quaternion.identity);
-        Vector3 direction = (_target[ThirdSpawnPoint].position - transform.position).normalized;
-        enemy.SetDirection(direction);
-    }
-
-    private void FourSpawner(Vector3 _position, int FourthSpawnPoint)
-    {
-        _position = _spawnPoints[FourthSpawnPoint].position;
-        var enemy = Instantiate(_mover[FourthSpawnPoint], _position, Quaternion.identity);
-        Vector3 direction = (_target[FourthSpawnPoint].position - transform.position).normalized;
-        enemy.SetDirection(direction);
-    }
-
-    private void FiveSpawner(Vector3 _position, int FifthSpawnPoint)
-    {        
-        _position = _spawnPoints[FifthSpawnPoint].position;
-        var enemy = Instantiate(_mover[FifthSpawnPoint], _position, Quaternion.identity);
-        Vector3 direction = (_target[FifthSpawnPoint].position - transform.position).normalized;
-        enemy.SetDirection(direction);
-    }
-
-    private IEnumerator Spawning(WaitForSeconds wait)
-    {
-        while (true)
-        {
-            Spawn();
-            yield return wait;
-        }
-    }
+    }    
 }
