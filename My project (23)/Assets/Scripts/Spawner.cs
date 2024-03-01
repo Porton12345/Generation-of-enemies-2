@@ -28,42 +28,12 @@ public class Spawner : MonoBehaviour
     }
 
     private void Spawn()
-    {
-        const int FirstSpawnPoint = 0;
-        const int SecondSpawnPoint = 1;
-        const int ThirdSpawnPoint = 2;
-        const int FourthSpawnPoint = 3;
-        const int FifthSpawnPoint = 4;                 
-               
+    {       
         int _currentSpawnpoint = Random.Range(minRandom, maxRandom);
-
         Vector3 _position = _spawnPoints[_currentSpawnpoint].position;
-
-        switch (_currentSpawnpoint)
-        {
-            case FirstSpawnPoint:
-                SpawnInPoint(_position, FirstSpawnPoint);
-                break;
-            case SecondSpawnPoint:
-                SpawnInPoint(_position, SecondSpawnPoint);
-                break;
-            case ThirdSpawnPoint:
-                SpawnInPoint(_position, ThirdSpawnPoint);
-                break;
-            case FourthSpawnPoint:
-                SpawnInPoint(_position, FourthSpawnPoint);
-                break;
-            case FifthSpawnPoint:
-                SpawnInPoint(_position, FifthSpawnPoint);
-                break;             
-        }       
-    }
-
-    private void SpawnInPoint(Vector3 _position, int FirstSpawnPoint)
-    {        
-        _position = _spawnPoints[FirstSpawnPoint].position;
-        var enemy = Instantiate(_mover[FirstSpawnPoint], _position, Quaternion.identity);
-        Vector3 direction = (_target[FirstSpawnPoint].position - transform.position).normalized;
-        enemy.SetDirection(direction);
+        
+        var enemy = Instantiate(_mover[_currentSpawnpoint], _position, Quaternion.identity);
+        Vector3 direction = (_target[_currentSpawnpoint].position - transform.position).normalized;
+        enemy.SetDirection(direction);       
     }    
 }
