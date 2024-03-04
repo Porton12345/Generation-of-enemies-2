@@ -355,6 +355,7 @@
 "Assets/Scripts/Enemy.cs"
 "Assets/Scripts/Mover.cs"
 "Assets/Scripts/Spawner.cs"
+"Assets/Scripts/SpawnerPoints.cs"
 -langversion:9.0
 
 /deterministic

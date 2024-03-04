@@ -2,15 +2,12 @@ using System.Collections;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
-{
-    [SerializeField] private Vector3 _direction;    
-    [SerializeField] private Transform[] _spawnPoints;    
-    [SerializeField] private Mover[] _mover;
-    [SerializeField] private Transform[] _target;
+{          
+    [SerializeField] private SpawnerPoints[] _spawningPoint;    
     [SerializeField, Min(0)] private float _countSecondsBeforeSpawp;    
        
     private int minRandom = 0;
-    private int maxRandom = 5;      
+    private int maxRandom = 3;      
 
     private void Start()
     {        
@@ -22,18 +19,15 @@ public class Spawner : MonoBehaviour
     {
         while (true)
         {
-            Spawn();
+            ActivatePoint();
             yield return wait;
         }
     }
 
-    private void Spawn()
+    private void ActivatePoint()
     {       
-        int _currentSpawnpoint = Random.Range(minRandom, maxRandom);
-        Vector3 _position = _spawnPoints[_currentSpawnpoint].position;
-        
-        var enemy = Instantiate(_mover[_currentSpawnpoint], _position, Quaternion.identity);
-        Vector3 direction = (_target[_currentSpawnpoint].position - transform.position).normalized;
-        enemy.SetDirection(direction);       
+        int _currentSpawnPoint = Random.Range(minRandom, maxRandom);
+        SpawnerPoints SpawnerPoint = _spawningPoint[_currentSpawnPoint];
+        SpawnerPoint.Spawn();
     }    
 }

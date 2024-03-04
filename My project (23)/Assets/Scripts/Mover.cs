@@ -3,14 +3,10 @@ using UnityEngine;
 public class Mover : MonoBehaviour
 {   
     [SerializeField, Min(0)] private float _speed;
-    
-    public void SetDirection(Vector3 direction)
-    {
-        transform.rotation = Quaternion.LookRotation(direction);
-    }
-
+    [SerializeField] private Transform _target;
+     
     private void Update()
     {
-        transform.Translate(Vector3.forward * _speed * Time.deltaTime);
-    }      
+        transform.position = Vector3.MoveTowards(transform.position, _target.position, _speed * Time.deltaTime);            
+    }    
 }
